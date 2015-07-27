@@ -47,16 +47,18 @@ var P1DataStream = function (opts) {
 
     var listener = function (data) {
 
-        var tariffOneTotalUsage = returnRegExResult(data, /^1-0:1\.8\.1\(0+(\d+\.\d+)\*kWh\)/m);
-        var tariffTwoTotalUsage = returnRegExResult(data, /^1-0:1\.8\.2\(0+(\d+\.\d+)\*kWh\)/m);
+        var tariffOneTotalUsage = returnRegExResult(data, /^1-0:1\.8\.1\(*0+(\d+\.\d+)\*kWh\)/m);
+        var tariffTwoTotalUsage = returnRegExResult(data, /^1-0:1\.8\.2\(*0+(\d+\.\d+)\*kWh\)/m);
         var currentTariff = returnRegExResult(data, /^0-0:96.14.0\(0+(.*?)\)/m);
         var currentUsage = returnRegExResult(data, /^1-0:1.7.0\((.*?)\*/m);
-
+        var TotalGasUsage = returnRegExResult(data, /(\(\d+\.\d+\))/m);
+        
         var dataGram = {
             tariffOneTotalUsage: tariffOneTotalUsage * 1,
             tariffTwoTotalUsage: tariffTwoTotalUsage * 1,
             currentTariff: currentTariff * 1,
-            currentUsage: currentUsage * 1000
+            currentUsage: currentUsage * 1000,
+            TotalGasUsage: TotalGasUsage *1
         };
 
      //   console.log('Raw data received: ' + data);
