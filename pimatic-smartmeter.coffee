@@ -97,8 +97,7 @@ module.exports = (env) ->
     getActivetariff: -> Promise.resolve @activetariff
     getTariff1totalusage: -> Promise.resolve @tariff1totalusage
     getTariff2totalusage: -> Promise.resolve @tariff2totalusage
-    getTariff2totalusage: -> Promise.resolve @tariff2totalusage
-    getTotalGasUsage: -> Promise.resolve @gasusage
+    getGasusage: -> Promise.resolve @gasusage
 
   plugin = new Smartmeter
   return plugin
